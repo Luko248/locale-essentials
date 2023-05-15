@@ -22,10 +22,10 @@
         ]
     },
     "files": [
-        "dist",
+        "index.js",
         "README.md"
     ],
     "scripts": {
-        "build": "tsc && terser dist/*.js --compress --mangle --output dist/index.min.js"
+        "build": "tsc && terser dist/*.js --compress --mangle --output index.js"
     }
 }
