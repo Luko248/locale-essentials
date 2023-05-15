@@ -57,6 +57,7 @@ localize('lang/');
 </div>
 ```
 
+**Note:** This script is included in package to.
 ```JavaScript
 const setLanguage = (language) => {
   // Set selected language as default
