@@ -1,0 +1,30 @@
+{
+    "name": "localize-js",
+    "description": "Updated on 13.4.2023",
+    "version": "0.0.1",
+    "main": "dist/index.js",
+    "private": false,
+    "license": "MIT",
+    "author": "Lukáš Chylík",
+    "type": "module",
+    "devDependencies": {
+        "typescript": "^5.0.4"
+    },
+    "browserslist": {
+        "production": [
+            "defaults",
+            "not IE 11",
+            "not IE_Mob 11"
+        ],
+        "development": [
+            "defaults"
+        ]
+    },
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "tsc"
+    }
+}
