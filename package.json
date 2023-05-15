@@ -1,5 +1,5 @@
 {
-    "name": "localize-js",
+    "name": "locale-essentials",
     "description": "Basic localization based on typescript and json.",
     "version": "0.0.1",
     "main": "dist/index.js",
