@@ -10,7 +10,7 @@ interface Translations {
  * @param langDirectory - The directory containing the language files.
  * @param langSwitch - (Optional) The element that will be used to switch languages.
  */
-export const localEssentials = (langDirectory: string, langSwitch?: HTMLElement): void => {
+export const localize = (langDirectory: string, langSwitch?: HTMLElement): void => {
     /**
      * Loads the language file and updates the DOM with the translations.
      */
