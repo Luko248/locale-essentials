@@ -2,7 +2,7 @@ interface Translations {
     [key: string]: string;
 }
 
-export const initLocalization = (langDirectory: string): void => {
+export const localize = (langDirectory: string): void => {
     const loadLocalization = (): void => {
         let language = localStorage.getItem('language') || navigator.language || (navigator as any).userLanguage;
         document.documentElement.lang = language;
