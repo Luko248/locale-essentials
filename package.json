@@ -1,13 +1,14 @@
 {
     "name": "locale-essentials",
     "description": "Basic localization based on typescript and json.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "dist/index.js",
     "private": false,
     "license": "MIT",
     "author": "Lukáš Chylík",
     "type": "module",
     "devDependencies": {
+        "terser": "^5.17.3",
         "typescript": "^5.0.4"
     },
     "browserslist": {
@@ -25,6 +26,6 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsc"
+        "build": "tsc && terser dist/*.js --compress --mangle --output dist/index.min.js"
     }
 }
