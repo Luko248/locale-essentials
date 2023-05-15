@@ -1,13 +1,16 @@
-### LocalEssentials
+# LocalEssentials
 
 LocalEssentials is a JavaScript library for adding localization to web pages. It allows you to easily load and apply translations to the current page using JSON files for different languages.
-### Installation
+
+
+## Installation
 
 To use LocalEssentials in your project, you can install it via NPM by running the following command in your terminal:
 
 ```sh
 npm install local-essentials
 ```
+
 
 ## Features
 
@@ -63,6 +66,7 @@ localEssentials('/path/to/lang/files/', document.getElementById('yourLangSwitchE
   <button data-lang="fr">Français</button>
 </div>
 ```
+
 
 ## Licence
 
