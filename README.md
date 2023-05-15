@@ -25,9 +25,11 @@ npm install local-essentials
 1. To use LocalEssentials, simply import it into your project and call the `localEssentials` function, passing in the path to the directory containing the language files and an optional language switch element.
 
 ```JavaScript
-import { localEssentials } from 'local-essentials';
+import { localize } from 'locale-essentials';
 
-localEssentials('/path/to/lang/files/', document.getElementById('yourLangSwitchElement'));
+document.addEventListener('DOMContentLoaded', () => {
+  localize('/path/to/lang/files/', document.getElementById('yourLangSwitchElement'));
+});
 ```
 
 2. Add the `data-localize` attribute to elements that need to be localized, with the key of the translation as the attribute value.
