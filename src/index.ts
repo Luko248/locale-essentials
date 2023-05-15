@@ -1,8 +1,19 @@
+/**
+ * An interface defining the structure of the translations object.
+ */
 interface Translations {
     [key: string]: string;
 }
 
-export const localize = (langDirectory: string): void => {
+/**
+ * Loads and applies the localization for the current page.
+ * @param langDirectory - The directory containing the language files.
+ * @param langSwitch - (Optional) The element that will be used to switch languages.
+ */
+export const localEssentials = (langDirectory: string, langSwitch?: HTMLElement): void => {
+    /**
+     * Loads the language file and updates the DOM with the translations.
+     */
     const loadLocalization = (): void => {
         let language = localStorage.getItem('language') || navigator.language || (navigator as any).userLanguage;
         document.documentElement.lang = language;
@@ -34,16 +45,24 @@ export const localize = (langDirectory: string): void => {
         xhr.send();
     };
 
+    /**
+     * Updates the DOM with the translations.
+     * @param translations - An object containing the translations.
+     */
     const updateLocalization = (translations: Translations): void => {
         const localizedElements = document.querySelectorAll('[data-localize]');
         localizedElements.forEach((element: Element) => {
             const key = element.getAttribute('data-localize');
             if (key && translations[key]) {
-              element.textContent = translations[key];
+                element.textContent = translations[key];
             }            
         });
     };
 
+    /**
+     * Sets the selected language and updates the DOM and URL.
+     * @param language - The selected language.
+     */
     const setLanguage = (language: string): void => {
         localStorage.setItem('language', language);
 
@@ -59,8 +78,11 @@ export const localize = (langDirectory: string): void => {
         loadLocalization();
     };
 
-    const registerLangSwitchListener = (): void => {
-        const langSwitch = document.getElementById('langSwitch') as HTMLDivElement;
+    /**
+     * Registers a listener for the language switch element.
+     * @param langSwitch - The element that will be used to switch languages.
+     */
+    const registerLangSwitchListener = (langSwitch?: HTMLElement): void => {
         if (langSwitch) {
             langSwitch.addEventListener('click', (e: Event) => {
                 if (e.target && (e.target as HTMLElement).matches('button[data-lang]')) {
@@ -74,5 +96,5 @@ export const localize = (langDirectory: string): void => {
     };
 
     loadLocalization();
-    registerLangSwitchListener();
+    registerLangSwitchListener(langSwitch);
 };

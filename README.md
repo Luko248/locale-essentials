@@ -1,6 +1,13 @@
-### Localization with localize()
+### LocalEssentials
 
-The localize() function is a JavaScript utility that allows you to easily add multi-language support to your web application. It works by loading language files in JSON format and using them to replace text content on the page.
+LocalEssentials is a JavaScript library for adding localization to web pages. It allows you to easily load and apply translations to the current page using JSON files for different languages.
+### Installation
+
+To use LocalEssentials in your project, you can install it via NPM by running the following command in your terminal:
+
+```sh
+npm install local-essentials
+```
 
 ## Features
 
@@ -12,12 +19,12 @@ The localize() function is a JavaScript utility that allows you to easily add mu
 
 ## Usage
 
-1. Add the `localize()` function to your JavaScript code. The function takes one argument - the directory where your language files are located.
+1. To use LocalEssentials, simply import it into your project and call the `localEssentials` function, passing in the path to the directory containing the language files and an optional language switch element.
 
 ```JavaScript
-import { localize } from 'localization-library';
+import { localEssentials } from 'local-essentials';
 
-localize('lang/');
+localEssentials('/path/to/lang/files/', document.getElementById('yourLangSwitchElement'));
 ```
 
 2. Add the `data-localize` attribute to elements that need to be localized, with the key of the translation as the attribute value.
@@ -55,39 +62,6 @@ localize('lang/');
   <button data-lang="en">English</button>
   <button data-lang="fr">Français</button>
 </div>
-```
-
-**Note:** This script is included in package to.
-```JavaScript
-const setLanguage = (language) => {
-  // Set selected language as default
-  localStorage.setItem('language', language);
-
-  // Update URL with selected language
-  const urlParams = new URLSearchParams(window.location.search);
-  urlParams.set('lang', language);
-  window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
-
-  // Update HTML lang attribute with selected language
-  document.documentElement.lang = language;
-
-  // Load localization with updated language
-  loadLocalization();
-};
-
-const registerLangSwitchListener = () => {
-  const langSwitch = document.getElementById('langSwitch');
-  langSwitch.addEventListener('click', (e) => {
-    if (e.target.matches('button[data-lang]')) {
-      const lang = e.target.getAttribute('data-lang');
-      if (lang) {
-        setLanguage(lang);
-      }
-    }
-  });
-};
-
-registerLangSwitchListener();
 ```
 
 ## Licence
