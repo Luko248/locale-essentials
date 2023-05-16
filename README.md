@@ -72,4 +72,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ## Licence
 
-This library is licensed under the MIT License. See the LICENSE file for details.
+This library is licensed under the MIT License.
