@@ -1,19 +1,7 @@
-/**
- * An interface defining the structure of the translations object.
- */
 interface Translations {
     [key: string]: string;
 }
-
-/**
- * Loads and applies the localization for the current page.
- * @param langDirectory - The directory containing the language files.
- * @param langSwitch - (Optional) The element that will be used to switch languages.
- */
 export const localize = (langDirectory: string, langSwitch?: HTMLElement): void => {
-    /**
-     * Loads the language file and updates the DOM with the translations.
-     */
     const loadLocalization = (): void => {
         let language = localStorage.getItem('language') || navigator.language || (navigator as any).userLanguage;
         document.documentElement.lang = language;
@@ -30,7 +18,6 @@ export const localize = (langDirectory: string, langSwitch?: HTMLElement): void 
                 const translations: Translations = JSON.parse(xhr.responseText);
                 updateLocalization(translations);
             } else {
-                // Language file not found, fall back to default language 'en'
                 const xhrDefault = new XMLHttpRequest();
                 xhrDefault.open('GET', `${langDirectory}en.json`);
                 xhrDefault.onload = (): void => {
@@ -44,11 +31,6 @@ export const localize = (langDirectory: string, langSwitch?: HTMLElement): void 
         };
         xhr.send();
     };
-
-    /**
-     * Updates the DOM with the translations.
-     * @param translations - An object containing the translations.
-     */
     const updateLocalization = (translations: Translations): void => {
         const localizedElements = document.querySelectorAll('[data-localize]');
         localizedElements.forEach((element: Element) => {
@@ -58,30 +40,14 @@ export const localize = (langDirectory: string, langSwitch?: HTMLElement): void 
             }            
         });
     };
-
-    /**
-     * Sets the selected language and updates the DOM and URL.
-     * @param language - The selected language.
-     */
     const setLanguage = (language: string): void => {
         localStorage.setItem('language', language);
-
-        // Update URL with selected language
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.set('lang', language);
         window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
-
-        // Update HTML lang attribute with selected language
         document.documentElement.lang = language;
-
-        // Load localization with updated language
         loadLocalization();
     };
-
-    /**
-     * Registers a listener for the language switch element.
-     * @param langSwitch - The element that will be used to switch languages.
-     */
     const registerLangSwitchListener = (langSwitch?: HTMLElement): void => {
         if (langSwitch) {
             langSwitch.addEventListener('click', (e: Event) => {
@@ -94,7 +60,6 @@ export const localize = (langDirectory: string, langSwitch?: HTMLElement): void 
             });
         }
     };
-
     loadLocalization();
     registerLangSwitchListener(langSwitch);
 };

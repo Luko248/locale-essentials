@@ -1,8 +1,8 @@
 {
     "name": "locale-essentials",
     "description": "Basic localization based on typescript and json.",
-    "version": "1.0.7",
-    "main": "index.js",
+    "version": "1.0.9",
+    "main": "index.ts",
     "private": false,
     "license": "MIT",
     "author": "Lukáš Chylík",
@@ -22,8 +22,6 @@
         ]
     },
     "files": [
-        "index.d.ts",
-        "index.js",
         "index.ts",
         "README.md"
     ],
