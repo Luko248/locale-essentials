@@ -128,10 +128,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-package.json
-.vs/localize-js/FileContentIndex/eccfcd63-314b-4a48-b426-967abad31231.vsidx
-.vs/localize-js/FileContentIndex/read.lock
-.vs/localize-js/FileContentIndex/b1d2d4bb-cc64-4c19-b043-674ff629270d.vsidx
-.vs/localize-js/FileContentIndex/9e396b0f-69ac-4252-b088-4e72821969be.vsidx
-.vs/slnx.sqlite
-.vs/localize-js/FileContentIndex/4b7e3da3-cf41-4869-b495-610b8823046a.vsidx
+.vs
+.vs/*

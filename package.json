@@ -1,14 +1,26 @@
 {
     "name": "locale-essentials",
+    "version": "1.1.0",
     "description": "Basic localization based on typescript and json.",
-    "version": "1.0.9",
+    "homepage": "https://github.com/Luko248/locale-essentials",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Luko248/locale-essentials.git"
+    },
+    "keywords": [
+        "localization",
+        "typescript",
+        "json"
+      ],
     "main": "index.ts",
     "private": false,
     "license": "MIT",
     "author": "Lukáš Chylík",
+    "bugs": {
+        "url": "https://github.com/Luko248/locale-essentials/issues"
+    },
     "type": "module",
     "devDependencies": {
-        "terser": "^5.17.3",
         "typescript": "^5.0.4"
     },
     "browserslist": {
