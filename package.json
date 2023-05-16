@@ -1,6 +1,6 @@
 {
     "name": "locale-essentials",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Basic localization based on typescript and json.",
     "homepage": "https://github.com/Luko248/locale-essentials",
     "repository": {
@@ -11,7 +11,7 @@
         "localization",
         "typescript",
         "json"
-      ],
+    ],
     "main": "index.ts",
     "private": false,
     "license": "MIT",
@@ -21,6 +21,7 @@
     },
     "type": "module",
     "devDependencies": {
+        "terser": "^5.17.4",
         "typescript": "^5.0.4"
     },
     "browserslist": {
@@ -35,9 +36,10 @@
     },
     "files": [
         "index.ts",
+        "index.min.js",
         "README.md"
     ],
     "scripts": {
-        "build": "tsc"
+        "build": "tsc && terser index.js --compress --mangle --output index.min.js"
     }
 }
