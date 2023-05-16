@@ -1,8 +1,8 @@
 {
     "name": "locale-essentials",
     "description": "Basic localization based on typescript and json.",
-    "version": "1.0.5",
-    "main": "dist/index.js",
+    "version": "1.0.7",
+    "main": "index.js",
     "private": false,
     "license": "MIT",
     "author": "Lukáš Chylík",
@@ -22,10 +22,12 @@
         ]
     },
     "files": [
-        "lib",
+        "index.d.ts",
+        "index.js",
+        "index.ts",
         "README.md"
     ],
     "scripts": {
-        "build": "tsc && terser lib/*.js --compress --mangle --output lib/index.js"
+        "build": "tsc"
     }
 }
