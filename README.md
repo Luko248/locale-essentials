@@ -1,16 +1,6 @@
 # LocaleEssentials
 
-LocalEssentials is a JavaScript library for adding localization to web pages. It allows you to easily load and apply translations to the current page using JSON files for different languages.
-
-
-## Installation
-
-To use LocalEssentials in your project, you can install it via NPM by running the following command in your terminal:
-
-```sh
-npm install locale-essentials
-```
-
+LocaleEssentials is a localization library that provides functionality for easily localizing your web application. It allows you to load language files and dynamically update the content based on the selected language.
 
 ## Features
 
@@ -20,55 +10,70 @@ npm install locale-essentials
 - Uses `data-localize` attribute to identify elements that need to be localized.
 - Falls back to default language if selected language file is not found.
 
-## Usage
+## Getting Started
 
-1. To use LocalEssentials, simply import it into your project and call the `localize` function, passing in the path to the directory containing the language files, default language and an optional language switch element.
+To use LocaleEssentials, follow these steps:
+
+1. Install the LocaleEssentials library in your project:
+```sh
+npm install locale-essentials
+```
+
+2. Import the `localize` function into your project:
 
 ```JavaScript
 import { localize } from 'locale-essentials';
+```
 
-document.addEventListener('DOMContentLoaded', () => {
-  localize('/path/to/lang/files/', 'en', document.getElementById('yourLangSwitchElement'));
+3. Call the `localize` function, passing in the following options as a single object parameter:
+- `langDirectory` (required): The path to the directory containing the language files.
+- `defaultLanguage` (optional): The default language to use as a fallback. If not provided, English ('en') will be used as the default.
+- `langSwitch` (optional): An optional language switch element that allows users to change the language.
+
+Example usage:
+```JavaScript
+localize({
+  langDirectory: 'path/to/language/files/',
+  defaultLanguage: 'fr',
+  langSwitch: document.getElementById('lang-switch')
 });
 ```
+## Language Files
 
-2. Add the `data-localize` attribute to elements that need to be localized, with the key of the translation as the attribute value.
+LocaleEssentials expects language files to be in JSON format and follow a specific structure. Each language file should contain key-value pairs where the keys represent the translation keys and the values represent the translated strings.
 
-```HTML
-<h1 data-localize="header-title">Title</h1>
-<p data-localize="header-desc">Some description.</p>
-```
-
-3. Create language files in JSON format with translations for each key.
-  - Save the files in the specified directory, using the language code as the file name (e.g. `en.json`, `fr.json`, etc.).
-  - Use the same keys in each language file.
+Example language file (`en.json`):
 
 ```json
-// en.json
 {
-  "header-title": "Title",
-  "header-desc": "Some description."
-}
-
-// fr.json
-{
-  "header-title": "Titre",
-  "header-desc": "Une description."
+  "greeting": "Hello!",
+  "message": "Welcome to our website.",
+  "button": "Click Me"
 }
 ```
+## HTML Markup
 
-4. (Optional) Add a language switcher to allow users to select their preferred language.
-  - Create a button for each available language.
-  - Add a `data-lang` attribute to each button with the language code as the attribute value.
-  - Add an event listener to the language switcher that calls the `setLanguage()` function with the selected language code.
+To enable localization in your HTML markup, use the `data-localize` attribute on the elements that need to be localized. The value of the attribute should correspond to the translation key in the language files.
 
-```html
-<div id="langSwitch">
+```HTML
+<h1 data-localize="greeting"></h1>
+<p data-localize="message"></p>
+<button data-localize="button"></button>
+```
+
+When the `localize` function is called, it will update the content of these elements based on the selected language.
+
+## Language Switch (optional)
+
+If you provide a language switch element (`langSwitch`) in the `localize` function options, LocaleEssentials will enable the functionality to switch between different languages. The language switch element should contain buttons or links with a `data-lang` attribute specifying the language code.
+
+```HTML
+<div id="lang-switch">
   <button data-lang="en">English</button>
   <button data-lang="fr">Français</button>
 </div>
 ```
-
+When a language button is clicked, the `localize` function will be called with the selected language, and the content will be updated accordingly.
 
 ## Licence
 
