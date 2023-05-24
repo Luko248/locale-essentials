@@ -1,4 +1,4 @@
-export const localize = (langDirectory, langSwitch) => {
+export const localize = (langDirectory, defaultLanguage = 'en', langSwitch) => {
     const loadLocalization = () => {
         let language = localStorage.getItem('language') || navigator.language || navigator.userLanguage;
         document.documentElement.lang = language;
@@ -17,7 +17,7 @@ export const localize = (langDirectory, langSwitch) => {
             }
             else {
                 const xhrDefault = new XMLHttpRequest();
-                xhrDefault.open('GET', `${langDirectory}en.json`);
+                xhrDefault.open('GET', `${langDirectory}${defaultLanguage}.json`); // Use defaultLanguage as fallback
                 xhrDefault.onload = () => {
                     if (xhrDefault.status === 200) {
                         const translations = JSON.parse(xhrDefault.responseText);

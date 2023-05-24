@@ -1,1 +1,1 @@
-export declare const localize: (langDirectory: string, langSwitch?: HTMLElement) => void;
+export declare const localize: (langDirectory: string, defaultLanguage?: string, langSwitch?: HTMLElement) => void;

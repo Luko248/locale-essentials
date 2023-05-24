@@ -1,36 +1,40 @@
 interface Translations {
     [key: string]: string;
 }
-export const localize = (langDirectory: string, langSwitch?: HTMLElement): void => {
+export const localize = (langDirectory: string, defaultLanguage: string = 'en', langSwitch?: HTMLElement): void => {
     const loadLocalization = (): void => {
         let language = localStorage.getItem('language') || navigator.language || (navigator as any).userLanguage;
         document.documentElement.lang = language;
         const urlParams = new URLSearchParams(window.location.search);
         const langParam = urlParams.get('lang');
+        
         if (langParam) {
-            language = langParam;
-            localStorage.setItem('language', langParam);
+          language = langParam;
+          localStorage.setItem('language', langParam);
         }
+        
         const xhr = new XMLHttpRequest();
         xhr.open('GET', `${langDirectory}${language}.json`);
         xhr.onload = (): void => {
-            if (xhr.status === 200) {
-                const translations: Translations = JSON.parse(xhr.responseText);
+          if (xhr.status === 200) {
+            const translations: Translations = JSON.parse(xhr.responseText);
+            updateLocalization(translations);
+          } else {
+            const xhrDefault = new XMLHttpRequest();
+            xhrDefault.open('GET', `${langDirectory}${defaultLanguage}.json`); // Use defaultLanguage as fallback
+            xhrDefault.onload = (): void => {
+              if (xhrDefault.status === 200) {
+                const translations: Translations = JSON.parse(xhrDefault.responseText);
                 updateLocalization(translations);
-            } else {
-                const xhrDefault = new XMLHttpRequest();
-                xhrDefault.open('GET', `${langDirectory}en.json`);
-                xhrDefault.onload = (): void => {
-                    if (xhrDefault.status === 200) {
-                        const translations: Translations = JSON.parse(xhrDefault.responseText);
-                        updateLocalization(translations);
-                    }
-                };
-                xhrDefault.send();
-            }
+              }
+            };
+            xhrDefault.send();
+          }
         };
+        
         xhr.send();
-    };
+      };
+      
     const updateLocalization = (translations: Translations): void => {
         const localizedElements = document.querySelectorAll('[data-localize]');
         localizedElements.forEach((element: Element) => {
