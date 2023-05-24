@@ -2,6 +2,7 @@
 
 LocaleEssentials is a localization library that provides functionality for easily localizing your web application. It allows you to load language files and dynamically update the content based on the selected language.
 
+
 ## Features
 
 - Loads language files in JSON format from specified directory.
@@ -9,6 +10,7 @@ LocaleEssentials is a localization library that provides functionality for easil
 - Automatically detects user's preferred language and sets it as default.
 - Uses `data-localize` attribute to identify elements that need to be localized.
 - Falls back to default language if selected language file is not found.
+
 
 ## Getting Started
 
@@ -38,6 +40,7 @@ localize({
   langSwitch: document.getElementById('lang-switch')
 });
 ```
+
 ## Language Files
 
 LocaleEssentials expects language files to be in JSON format and follow a specific structure. Each language file should contain key-value pairs where the keys represent the translation keys and the values represent the translated strings.
@@ -51,6 +54,7 @@ Example language file (`en.json`):
   "button": "Click Me"
 }
 ```
+
 ## HTML Markup
 
 To enable localization in your HTML markup, use the `data-localize` attribute on the elements that need to be localized. The value of the attribute should correspond to the translation key in the language files.
@@ -63,6 +67,7 @@ To enable localization in your HTML markup, use the `data-localize` attribute on
 
 When the `localize` function is called, it will update the content of these elements based on the selected language.
 
+
 ## Language Switch (optional)
 
 If you provide a language switch element (`langSwitch`) in the `localize` function options, LocaleEssentials will enable the functionality to switch between different languages. The language switch element should contain buttons or links with a `data-lang` attribute specifying the language code.
@@ -74,6 +79,7 @@ If you provide a language switch element (`langSwitch`) in the `localize` functi
 </div>
 ```
 When a language button is clicked, the `localize` function will be called with the selected language, and the content will be updated accordingly.
+
 
 ## Licence
 
