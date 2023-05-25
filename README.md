@@ -1,6 +1,6 @@
 # LocaleEssentials
 
-LocaleEssentials is a localization library that provides functionality for easily localizing your web application. It allows you to load language files and dynamically update the content based on the selected language.
+LocaleEssentials is a localization library that provides functionality for easy localization in your web application. It allows you to load language files and dynamically update the content based on the selected language.
 
 
 ## Features
