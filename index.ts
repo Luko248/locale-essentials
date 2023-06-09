@@ -49,11 +49,18 @@ interface LocalizeOptions {
       localizedElements.forEach((element: Element) => {
         const key = element.getAttribute('data-localize');
         if (key && translations[key]) {
-          element.textContent = translations[key];
+          const tagName = element.tagName.toLowerCase();
+          const attributesToTranslate = ['title', 'aria-label', 'placeholder'];
+    
+          if (attributesToTranslate.includes(tagName)) {
+            element.setAttribute(tagName, translations[key]);
+          } else {
+            element.textContent = translations[key];
+          }
         }
       });
     };
-  
+    
     const setLanguage = (language: string): void => {
       localStorage.setItem('language', language);
       const urlParams = new URLSearchParams(window.location.search);
