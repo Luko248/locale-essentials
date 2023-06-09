@@ -45,15 +45,25 @@ interface LocalizeOptions {
     };
   
     const updateLocalization = (translations: Translations): void => {
-      const localizedElements = document.querySelectorAll('[data-localize]');
+      const localizedElements = document.querySelectorAll('[data-localize], [data-localize-placeholder], [data-localize-aria-label], [data-localize-title]');
       localizedElements.forEach((element: Element) => {
         const key = element.getAttribute('data-localize');
+        const placeholderKey = element.getAttribute('data-localize-placeholder');
+        const ariaLabelKey = element.getAttribute('data-localize-aria-label');
+        const titleKey = element.getAttribute('data-localize-title');
+    
         if (key && translations[key]) {
           const tagName = element.tagName.toLowerCase();
           const attributesToTranslate = ['title', 'aria-label', 'placeholder'];
     
           if (attributesToTranslate.includes(tagName)) {
-            element.setAttribute(tagName, translations[key]);
+            if (placeholderKey && tagName === 'input') {
+              (element as HTMLInputElement).placeholder = translations[placeholderKey];
+            } else if (ariaLabelKey && tagName === 'input') {
+              element.setAttribute('aria-label', translations[ariaLabelKey]);
+            } else if (titleKey) {
+              element.setAttribute('title', translations[titleKey]);
+            }
           } else {
             element.textContent = translations[key];
           }

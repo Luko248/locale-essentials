@@ -1,6 +1,6 @@
 {
     "name": "locale-essentials",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "description": "Basic localization based on typescript and json.",
     "homepage": "https://github.com/Luko248/locale-essentials",
     "repository": {
