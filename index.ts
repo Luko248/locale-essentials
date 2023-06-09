@@ -57,9 +57,9 @@ interface LocalizeOptions {
           const attributesToTranslate = ['title', 'aria-label', 'placeholder'];
     
           if (attributesToTranslate.includes(tagName)) {
-            if (placeholderKey && tagName === 'input') {
-              (element as HTMLInputElement).placeholder = translations[placeholderKey];
-            } else if (ariaLabelKey && tagName === 'input') {
+            if (placeholderKey) {
+              (element as HTMLInputElement).setAttribute('placeholder', translations[placeholderKey]);
+            } else if (ariaLabelKey) {
               element.setAttribute('aria-label', translations[ariaLabelKey]);
             } else if (titleKey) {
               element.setAttribute('title', translations[titleKey]);
